@@ -1,0 +1,513 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Arial-BoldMT;\f1\fswiss\fcharset0 ArialMT;\f2\fswiss\fcharset0 Arial-ItalicMT;
+\f3\fswiss\fcharset0 Arial-BoldItalicMT;}
+{\colortbl;\red255\green255\blue255;\red234\green234\blue234;\red213\green213\blue213;\red0\green0\blue117;
+\red83\green85\blue2;\red11\green84\blue83;\red115\green0\blue2;\red16\green121\blue2;}
+{\*\expandedcolortbl;;\csgenericrgb\c91765\c91765\c91765;\csgenericrgb\c83529\c83529\c83529;\csgenericrgb\c0\c0\c45882;
+\csgenericrgb\c32549\c33333\c784;\csgenericrgb\c4314\c32941\c32549;\csgenericrgb\c45098\c0\c784;\csgenericrgb\c6275\c47451\c784;}
+{\info
+{\author GB}}\margl1440\margr1440\margb1800\margt1800\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\pardirnatural\partightenfactor0
+
+\f0\b\fs28 \cf0 About Algorithms \'85
+\f1\b0 \
+This isn\'92t a course in Algorithm Design \'85 today\'92s lesson, tho, is to sensitize us to issues of performance \'96 how well our code executes, especially as there is more data to be processed.\
+\
+An algorithm accepts an input, returns a true result, and stops.  Stated more CS-y, it is unambiguous (each step and I/O is clear, leading to one meaning); accepts input (0+ well-defined inputs); generates output (1+ outputs that are accurate); finite (must stop after a certain number of steps); be feasible (within the available tech); and independently documented (step-by-step directions [modularization] that is independent of any particular programming language).  \
+\
+Modularization: breaking down the task at hand into logically-related actions; then breaking down those actions into smaller actions that accept data [from a \'93source\'94], affect the data, and/or move the data elsewhere [to a \'93sink\'94].  \
+\
+IMHO, we are concerned about good code \'91cause good code is just darn right beautiful and a joy to behold! but also we consider that when using large, unknown data sets there comes a point where hardware must be considered.  This leads to \'93information ecologies\'94 like Hadoop and other approaches.  [See the Big Data book from EMC2 in our optional resources folder, as well as the Sipser text book 
+\f2\i Introduction to the theory of computation
+\f1\i0  - this is the standard grad school first-year text.]\
+\
+
+\f0\b Before or after?
+\f1\b0 \
+We look at our algorithms\'92 potential efficiencies before the fact (aka a priori, where the algorithm is measured assuming many  factors are constant - like the processor speed and other situation-specific issues); or look at them after the fact (a posteriori, where stats are used to measure the impact of the algorithm\'92s performance as well as running speed, ram/disk space needs, etc., are all collected).\
+\
+Algorithm performance is only an issue when there\'92s a lot of data to be processed - in fact there are algorithms that work great when the data set is small and then work poorly when the set is large, and vice versa.  Since it\'92s only large data sets that are the issue, this is called 
+\f0\b asymptotic
+\f1\b0 .\
+\
+How measure?  Time and Space.\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+
+\f2\i \cf0 Time
+\f1\i0  measurements look at the number of operations performed.  Time complexity is the amount of time to run - considered by its best runtime (Big Omega), its worst-case scenario (Big O) or its average runtime (Big Theta).\
+\
+If we have 
+\f2\i n
+\f1\i0  steps and time T, then T(n) is the time needed for the steps of our algorithm.  If it takes n = 5 steps to do some task (each step takes the same amount of time), then we could say our algorithm runs at T(5).  The total number of computations, 
+\f2\i c
+\f1\i0 , times the number of steps 
+\f2\i n
+\f1\i0 , means T(n) = c \'95 n.  If each step is constant, then T(n) grows linearly.  [Steps can be very varied \'85 ]\
+\
+
+\f2\i Space
+\f1\i0  is measured the max memory space.  We won\'92t worry about either for the moment - just be sensitive to these issues.  This leads to decisions, too, about \'93chunking\'94 our data, reducing the size of the data to be processed, data cleansing and warehousing, probabilistic sets (for sql, Data Squares), etc.  We won\'92t worry about this here.\
+\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+
+\f0\b \cf0 Big O
+\f1\b0 \
+
+\f0\b Big Omega
+\f1\b0 \
+
+\f0\b Big Theta
+\f1\b0 \
+\pard\pardeftab720\sa200\pardirnatural\partightenfactor0
+\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 Big Oh Notation, \uc0\u927 \
+\pard\tx64\pardeftab720\li64\fi-64\ri64\sa192\pardirnatural\qj\partightenfactor0
+\cf0 The notation \uc0\u927 (n) is the formal way to express the upper bound of an algorithm's running time. It measures the worst case time complexity or the longest amount of time an algorithm can possibly take to complete.\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\pard\tx64\pardeftab720\li64\fi-64\ri64\sa192\pardirnatural\qj\partightenfactor0
+\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 For example, for a function 
+\f3\i\b \shad\shadx20\shady-20\shadr20\shado0 \shadc0 f
+\f0\i0 (n)
+\f1\b0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\cb2 \uc0\u927 (
+\f2\i f
+\f1\i0 (n)) = \{ 
+\f2\i g
+\f1\i0 (n) : there exists c > 0 and n0 such that 
+\f2\i f
+\f1\i0 (n) \uc0\u8804  c.
+\f2\i g
+\f1\i0 (n) for all n > n0. \}\cb1 \
+\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \shad0 \
+\pard\pardeftab720\sa200\pardirnatural\partightenfactor0
+\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 Omega Notation, \uc0\u937 \
+\pard\tx64\pardeftab720\li64\fi-64\ri64\sa192\pardirnatural\qj\partightenfactor0
+\cf0 The notation \uc0\u937 (n) is the formal way to express the lower bound of an algorithm's running time. It measures the best case time complexity or the best amount of time an algorithm can possibly take to complete.\
+For example, for a function 
+\f3\i\b \shad\shadx20\shady-20\shadr20\shado0 \shadc0 f
+\f0\i0 (n)
+\f1\b0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \cb2 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \uc0\u937 (
+\f2\i f
+\f1\i0 (n)) \uc0\u8805  \{ 
+\f2\i g
+\f1\i0 (n) : there exists c > 0 and n0 such that 
+\f2\i g
+\f1\i0 (n) \uc0\u8804  c.
+\f2\i f
+\f1\i0 (n) for all n > n0. \}\cb1 \
+\
+\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \shad0 \
+\pard\pardeftab720\sa200\pardirnatural\partightenfactor0
+\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 Theta Notation, \uc0\u952 \
+\pard\tx64\pardeftab720\li64\fi-64\ri64\sa192\pardirnatural\qj\partightenfactor0
+\cf0 The notation \uc0\u952 (n) is the formal way to express both the lower bound and the upper bound of an algorithm's running time. It is represented as follows \u8722 \
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\pard\tx64\pardeftab720\li64\fi-64\ri64\sa192\pardirnatural\qj\partightenfactor0
+\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 For example, for a function 
+\f3\i\b \shad\shadx20\shady-20\shadr20\shado0 \shadc0 f
+\f0\i0 (n)
+\f1\b0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\cb2 \uc0\u952 (
+\f2\i f
+\f1\i0 (n)) = \{ 
+\f2\i g
+\f1\i0 (n) if and only if 
+\f2\i g
+\f1\i0 (n) =  \uc0\u927 (
+\f2\i f
+\f1\i0 (n)) and 
+\f2\i g
+\f1\i0 (n) = \uc0\u937 (
+\f2\i f
+\f1\i0 (n)) for all n > n0. \}\cb1 \
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \shad0 \
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth2880\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf3 \clbrdrl\brdrs\brdrw20\brdrcf3 \clbrdrb\brdrs\brdrw20\brdrcf3 \clbrdrr\brdrs\brdrw20\brdrcf3 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth2880\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf3 \clbrdrl\brdrs\brdrw20\brdrcf3 \clbrdrb\brdrs\brdrw20\brdrcf3 \clbrdrr\brdrs\brdrw20\brdrcf3 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth2880\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf3 \clbrdrl\brdrs\brdrw20\brdrcf3 \clbrdrb\brdrs\brdrw20\brdrcf3 \clbrdrr\brdrs\brdrw20\brdrcf3 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\pardirnatural\qc\partightenfactor0
+\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 constant\cell 
+\pard\intbl\itap1\pardeftab720\pardirnatural\qc\partightenfactor0
+\cf0 \uc0\u8722 \cell 
+\pard\intbl\itap1\pardeftab720\pardirnatural\qc\partightenfactor0
+\cf0 \uc0\u927 (1)\cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth2880\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf3 \clbrdrl\brdrs\brdrw20\brdrcf3 \clbrdrb\brdrs\brdrw20\brdrcf3 \clbrdrr\brdrs\brdrw20\brdrcf3 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth2880\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf3 \clbrdrl\brdrs\brdrw20\brdrcf3 \clbrdrb\brdrs\brdrw20\brdrcf3 \clbrdrr\brdrs\brdrw20\brdrcf3 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth2880\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf3 \clbrdrl\brdrs\brdrw20\brdrcf3 \clbrdrb\brdrs\brdrw20\brdrcf3 \clbrdrr\brdrs\brdrw20\brdrcf3 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\pardirnatural\qc\partightenfactor0
+\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 logarithmic\cell 
+\pard\intbl\itap1\pardeftab720\pardirnatural\qc\partightenfactor0
+\cf0 \uc0\u8722 \cell 
+\pard\intbl\itap1\pardeftab720\pardirnatural\qc\partightenfactor0
+\cf0 \uc0\u927 (log n)\cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth2880\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf3 \clbrdrl\brdrs\brdrw20\brdrcf3 \clbrdrb\brdrs\brdrw20\brdrcf3 \clbrdrr\brdrs\brdrw20\brdrcf3 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth2880\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf3 \clbrdrl\brdrs\brdrw20\brdrcf3 \clbrdrb\brdrs\brdrw20\brdrcf3 \clbrdrr\brdrs\brdrw20\brdrcf3 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth2880\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf3 \clbrdrl\brdrs\brdrw20\brdrcf3 \clbrdrb\brdrs\brdrw20\brdrcf3 \clbrdrr\brdrs\brdrw20\brdrcf3 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\pardirnatural\qc\partightenfactor0
+\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 linear\cell 
+\pard\intbl\itap1\pardeftab720\pardirnatural\qc\partightenfactor0
+\cf0 \uc0\u8722 \cell 
+\pard\intbl\itap1\pardeftab720\pardirnatural\qc\partightenfactor0
+\cf0 \uc0\u927 (n)\cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth2880\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf3 \clbrdrl\brdrs\brdrw20\brdrcf3 \clbrdrb\brdrs\brdrw20\brdrcf3 \clbrdrr\brdrs\brdrw20\brdrcf3 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth2880\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf3 \clbrdrl\brdrs\brdrw20\brdrcf3 \clbrdrb\brdrs\brdrw20\brdrcf3 \clbrdrr\brdrs\brdrw20\brdrcf3 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth2880\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf3 \clbrdrl\brdrs\brdrw20\brdrcf3 \clbrdrb\brdrs\brdrw20\brdrcf3 \clbrdrr\brdrs\brdrw20\brdrcf3 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\pardirnatural\qc\partightenfactor0
+\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 n log n\cell 
+\pard\intbl\itap1\pardeftab720\pardirnatural\qc\partightenfactor0
+\cf0 \uc0\u8722 \cell 
+\pard\intbl\itap1\pardeftab720\pardirnatural\qc\partightenfactor0
+\cf0 \uc0\u927 (n log n)\cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth2880\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf3 \clbrdrl\brdrs\brdrw20\brdrcf3 \clbrdrb\brdrs\brdrw20\brdrcf3 \clbrdrr\brdrs\brdrw20\brdrcf3 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth2880\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf3 \clbrdrl\brdrs\brdrw20\brdrcf3 \clbrdrb\brdrs\brdrw20\brdrcf3 \clbrdrr\brdrs\brdrw20\brdrcf3 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth2880\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf3 \clbrdrl\brdrs\brdrw20\brdrcf3 \clbrdrb\brdrs\brdrw20\brdrcf3 \clbrdrr\brdrs\brdrw20\brdrcf3 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\pardirnatural\qc\partightenfactor0
+\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 quadratic\cell 
+\pard\intbl\itap1\pardeftab720\pardirnatural\qc\partightenfactor0
+\cf0 \uc0\u8722 \cell 
+\pard\intbl\itap1\pardeftab720\pardirnatural\qc\partightenfactor0
+\cf0 \uc0\u927 (n2)\cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth2880\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf3 \clbrdrl\brdrs\brdrw20\brdrcf3 \clbrdrb\brdrs\brdrw20\brdrcf3 \clbrdrr\brdrs\brdrw20\brdrcf3 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth2880\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf3 \clbrdrl\brdrs\brdrw20\brdrcf3 \clbrdrb\brdrs\brdrw20\brdrcf3 \clbrdrr\brdrs\brdrw20\brdrcf3 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth2880\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf3 \clbrdrl\brdrs\brdrw20\brdrcf3 \clbrdrb\brdrs\brdrw20\brdrcf3 \clbrdrr\brdrs\brdrw20\brdrcf3 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\pardirnatural\qc\partightenfactor0
+\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 cubic\cell 
+\pard\intbl\itap1\pardeftab720\pardirnatural\qc\partightenfactor0
+\cf0 \uc0\u8722 \cell 
+\pard\intbl\itap1\pardeftab720\pardirnatural\qc\partightenfactor0
+\cf0 \uc0\u927 (n3)\cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth2880\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf3 \clbrdrl\brdrs\brdrw20\brdrcf3 \clbrdrb\brdrs\brdrw20\brdrcf3 \clbrdrr\brdrs\brdrw20\brdrcf3 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth2880\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf3 \clbrdrl\brdrs\brdrw20\brdrcf3 \clbrdrb\brdrs\brdrw20\brdrcf3 \clbrdrr\brdrs\brdrw20\brdrcf3 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth2880\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf3 \clbrdrl\brdrs\brdrw20\brdrcf3 \clbrdrb\brdrs\brdrw20\brdrcf3 \clbrdrr\brdrs\brdrw20\brdrcf3 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\pardirnatural\qc\partightenfactor0
+\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 polynomial\cell 
+\pard\intbl\itap1\pardeftab720\pardirnatural\qc\partightenfactor0
+\cf0 \uc0\u8722 \cell 
+\pard\intbl\itap1\pardeftab720\pardirnatural\qc\partightenfactor0
+\cf0 n\uc0\u927 (1)\cell \row
+
+\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalt \clshdrawnil \clwWidth2880\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf3 \clbrdrl\brdrs\brdrw20\brdrcf3 \clbrdrb\brdrs\brdrw20\brdrcf3 \clbrdrr\brdrs\brdrw20\brdrcf3 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx2880
+\clvertalt \clshdrawnil \clwWidth2880\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf3 \clbrdrl\brdrs\brdrw20\brdrcf3 \clbrdrb\brdrs\brdrw20\brdrcf3 \clbrdrr\brdrs\brdrw20\brdrcf3 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx5760
+\clvertalt \clshdrawnil \clwWidth2880\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf3 \clbrdrl\brdrs\brdrw20\brdrcf3 \clbrdrb\brdrs\brdrw20\brdrcf3 \clbrdrr\brdrs\brdrw20\brdrcf3 \clpadt160 \clpadl160 \clpadb160 \clpadr160 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\pardirnatural\qc\partightenfactor0
+\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 exponential\cell 
+\pard\intbl\itap1\pardeftab720\pardirnatural\qc\partightenfactor0
+\cf0 \uc0\u8722 \cell 
+\pard\intbl\itap1\pardeftab720\pardirnatural\qc\partightenfactor0
+\cf0 2\uc0\u927 (n)\cell \lastrow\row
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf0 \shad0 \
+\
+Finally, testing algorithsm can be divided into a couple of approaches.  Greedy algorithsm try to find an optimal local solution with the goal of building up to some global thing.  So they\'92re kinda short sighted: Travelling Salesman, Minimial Spanning Trees \'85 \
+\
+Divide and Conquer (more later on that)\
+\
+Dynamic Programming: like divide and conquer, in the division into smaller pieces, but unlike that doesn\'92t involving each sub-problem independently \'85 the results of the smaller sub0problems are remembered and used for overlapping problems (? say what?  )  \
+Fibonacci number\
+Knapsack\
+Tower of Hanoi.\
+\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+
+\f0\b \cf0 Commonly Found Examples
+\f1\b0 \
+Moving data around isn\'92t just moving x to y.  There\'92s a lot behind the scenes in terms of commands that are necessary to move data around.  Common experiments in algorithm design seem to focus on speed of retrieving something or speed/efficiency at inserting/moving data.\
+\
+Thinking about this leads to the \'93divide and conquer\'94 approach, the most common.  Divide a task into small chunks; solve that chunk; and then put the data back together again in some new format.  [Like a merge.]  Famous example: Binary Search.  \
+\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+
+\f2\i \cf0 Binary Search:
+\f1\i0   Take an already-sorted list and look for something in the middle, like the alphabet a - z and you want to find the letter \'91g\'92.  Divide the alphabet in two: a-l, m-z.  Is \'93g\'94 > or < than the range of the split [is \'93g\'94 > a and \'93g\'94 < l?].   We keep chopping the size of the list into smaller chunks \'91til we find the letter we want.\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf4 \cb2 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 def\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  bsearch\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 list\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  val\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ):\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   list_size \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  len\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 list\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 )\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 -\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf6 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 1\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   idx0 \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf6 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 0\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   idxn \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  list_size\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf7 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 # Find the middle most value\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 while\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  idx0 \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 <=\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  idxn\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      midval \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 idx0 \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 +\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  idxn\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 )\cf7 // 2\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 if\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  list\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 midval\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ==\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  val\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+         \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 return\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  midval\
+\cf7 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 # Compare the value the middle most value\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 if\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  val \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 >\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  list\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 midval\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]:\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      idx0 \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  midval \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 +\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf6 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 1\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 else\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      idxn \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  midval \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 -\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf6 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 1\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 if\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  idx0 \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 >\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  idxn\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 return\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 None\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\cf7 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 # Initialize the sorted list\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+list \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf6 2\cf5 ,\cf6 7\cf5 ,\cf6 19\cf5 ,\cf6 34\cf5 ,\cf6 53\cf5 ,\cf6 72\cf5 ]\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\
+\cf7 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 # Print the search result\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 print\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 bsearch\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 list\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf6 72\cf5 ))\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 print\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 bsearch\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 list\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf6 11\cf5 ))\
+\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+
+\f2\i \cf0 \cb1 \shad0 Binary Search using Recursion:
+\f1\i0 \
+If there\'92s overhead to moving data around, what if we load the command once and just call itself repeatedly?  Using that same ordered list, the recursive function takes in the list and needs to know the starting + ending points.  Then the search calls itself till we have a success or failure state (we find it or we don\'92t).  \
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf4 \cb2 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 def\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  bsearch\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 list\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  idx0\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  idxn\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  val\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ):\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 if\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 idxn \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 <\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  idx0\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ):\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 return\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 None\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 else\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      midval \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  idx0 \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 +\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ((\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 idxn \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 -\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  idx0\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 )\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf7 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 // 2)\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf7 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 # Compare the search item with middle most value\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 if\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  list\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 midval\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 >\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  val\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 return\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  bsearch\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 list\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  idx0\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  midval\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 -\cf6 1\cf5 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 val\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 )\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 else\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 if\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  list\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 midval\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 <\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  val\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 return\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  bsearch\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 list\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  midval\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 +\cf6 1\cf5 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  idxn\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  val\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 )\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 else\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 return\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  midval\
+list \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf6 8\cf5 ,\cf6 11\cf5 ,\cf6 24\cf5 ,\cf6 56\cf5 ,\cf6 88\cf5 ,\cf6 131\cf5 ]\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 print\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 bsearch\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 list\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf6 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 0\cf5 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf6 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 5\cf5 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf6 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 24\cf5 ))\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 print\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 bsearch\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 list\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf6 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 0\cf5 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf6 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 5\cf5 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf6 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 51\cf5 ))\cf0 \cb1 \shad0 \
+\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+
+\f2\i \cf0 Backtracking
+\f1\i0 : Is a recursive technique looking for one option out of many options; a permutation.  Choose an option and then backtrack meaning we know we want \'93x\'94 and see if \'93x\'94 is possible given the inputs.\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf4 \cb2 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 def\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  permute\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 list\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  s\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ):\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 if\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  list \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ==\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf6 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 1\cf5 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 return\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  s\
+   \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 else\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 return\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \
+         y \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 +\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  x\
+         \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 for\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  y \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 in\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  permute\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf6 1\cf5 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  s\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 )\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+         \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 for\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  x \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 in\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  permute\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 list \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 -\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf6 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 1\cf5 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  s\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 )\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 print\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 permute\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf6 1\cf5 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "a"\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "b"\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "c"\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]))\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 print\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 permute\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf6 2\cf5 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "a"\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "b"\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "c"\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]))\cf0 \cb1 \shad0 \
+\
+\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+
+\f0\b \cf0 Sorting
+\f1\b0 \
+The most popular demos are bubble, merge, insertion, shell, and selection.  To sort we need some kind of ordering for the sort - usually numerical (and letters/words are considered by their numeric values). [Objects can be sorted but they have to have some magic method used to compare some value in them, like comparing objects representing businesses but sorting on some annual gross income variable in the object.]\
+\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+
+\f2\i \cf0 Bubble Sort
+\f1\i0 :  Here we compare side-by-side items to see if they\'92re in order and if not, swap \'91em.  Like the letters F and B side-by-side in a list.  If list[0] is F and list[B] is 1, we can see B should be first, not second.  So need to note F\'92s value and location, store them on the side; move B to F\'92s 0 position, replace B\'92s with F\'92s data.  Whew.  \
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf4 \cb2 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 def\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  bubblesort\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 list\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ):\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf7 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 # Swap the elements to arrange in order\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 for\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  iter_num \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 in\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  range\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 len\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 list\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 )-\cf6 1\cf5 ,\cf6 0\cf5 ,-\cf6 1\cf5 ):\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 for\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  idx \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 in\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  range\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 iter_num\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ):\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+         \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 if\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  list\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 idx\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]>\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 list\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 idx\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 +\cf6 1\cf5 ]:\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+            temp \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  list\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 idx\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+            list\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 idx\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  list\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 idx\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 +\cf6 1\cf5 ]\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+            list\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 idx\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 +\cf6 1\cf5 ]\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  temp\
+list \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf6 19\cf5 ,\cf6 2\cf5 ,\cf6 31\cf5 ,\cf6 45\cf5 ,\cf6 6\cf5 ,\cf6 11\cf5 ,\cf6 121\cf5 ,\cf6 27\cf5 ]\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+bubblesort\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 list\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 )\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 print\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 list\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 )\
+\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+
+\f2\i \cf0 \cb1 \shad0 Merge Sort:
+\f1\i0 \
+Like the binary search notion, the merger divides the data set (like a list) into equal halves and the combines to be sorted.  \
+\
+\
+https://www.tutorialspoint.com/python_data_structure/python_sorting_algorithms.htm\
+\
+def merge_sort(unsorted_list):\
+	if len(unsorted_list) <= 1:\
+		return unsorted_list\
+\
+# find the middle point and divide it\
+	middle = len(unsorted_list) // 2\
+	leftside = unsorted_list[:middle]\
+	rightside = unsorted_list[middle:]\
+\
+	leftside = merge_sort(left)\
+	right = merge_sort(right)\
+	return list(merge(list, right))\
+\
+# merge the sorted pieces\
+def merge(left, right):\
+	res = []\
+	while len(left) != 0 and len(right) != 0:\
+		if left[0] < right[0]:\
+			res.append(left)\
+			left.remove(left[0]))\
+		else:\
+			res.append(right[0])\
+			right.remove(right[0]))\
+	if len(left) == 0:\
+		res = res + right\
+	else:\
+		res = res + left\
+	return res\
+\
+unsorted_list = [xxxx]\
+print(merge_sort(unsorted_list))\
+\
+----\
+
+\f2\i Insertion Sort
+\f1\i0 :\
+\'85 is pretty important \'91cause we want to store data in the appropriate place in [an already] sorted list.  At first, then, we compare the first two elements in the list and sort by comparing (sound familiar?).  Then move to the next (here, 3\super rd\nosupersub ) element and check its position in light of the other two already sorted items \'85  E.g., if we have [3, 9, 1\'85] is 3 < 9?  Yes; move to the next item: is 1 < 9?  No, move it left; [3, 1, 9].  Is 1 < 3? Yes, move it to the left.  \
+\
+def insertion(mylist):\
+	for i in range(1, len(mylist)):\
+		j = i - 1\
+		next_element = mylist[i]\
+\
+# compare the current element with the next one\
+	while (list[j] > next_element) and (j >= 0):\
+		mylist[j+1 = mylist[j]\
+		j = j - 1\
+	mylist[j+1] = next_element\
+\
+startList = [19, 3]\
+insertion(startList)\
+print(list)\
+\
+=============================\
+Data are now ready to be found!\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+
+\f0\b \cf0 Searching
+\f1\b0 \
+Searching can be done lots of ways.  The most obvious is the brute-force approach of starting with the first item and going \'91til the end of the list, unless we find what we want along the way.  Say we look at each card in a stack of 52 cards.  Each card\'92s inspection takes 1 second \'85 no matter what.  Going thru each card with the same amount of time per inspection makes this a \'93linear search.\'94  Very inefficient and not used.\
+\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+
+\f2\i \cf0 Interpolation Search:
+\f1\i0 \
+Like the inserting questions above, we can start in the middle of our data in a sorted list and keep working smaller chunks of our data \'91til we find the place.  \
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf4 \cb2 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 def\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  intpolsearch\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 values\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 x \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ):\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   idx0 \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf6 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 0\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   idxn \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 len\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 values\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 )\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 -\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf6 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 1\cf5 )\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 while\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  idx0 \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 <=\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  idxn \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 and\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  x \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 >=\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  values\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 idx0\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 and\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  x \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 <=\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  values\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 idxn\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]:\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf7 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 # Find the mid point\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+	mid \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  idx0 \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 +\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \\\
+      \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 int\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (((\cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 float\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 idxn \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 -\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  idx0\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 )/(\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  values\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 idxn\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 -\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  values\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 idx0\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]))\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 *\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  x \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 -\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  values\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 idx0\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ])))\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\cf7 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 # Compare the value at mid point with search value \cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 if\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  values\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 mid\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ==\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  x\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 return\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "Found "\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 +\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 str\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 x\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 )+\cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 " at index "\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 +\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 str\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 mid\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 )\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 if\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  values\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 mid\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 <\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  x\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      idx0 \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  mid \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 +\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf6 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 1\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 return\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "Searched element not in the list"\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\
+l \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf6 2\cf5 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf6 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 6\cf5 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf6 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 11\cf5 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf6 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 19\cf5 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf6 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 27\cf5 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf6 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 31\cf5 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf6 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 45\cf5 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf6 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 121\cf5 ]\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 print\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 intpolsearch\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 l\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf6 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 2\cf5 ))\cf0 \cb1 \shad0 \
+\
+-----------\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+
+\f2\i \cf0 Nodes and Traversal Direction:
+\f1\i0 \
+A lot of data are stored in hierarchical structures, a graph, like .xml and .json.  There are two ways of finding data in these collections of \'93nodes.\'94  One is depth-first; the other is breadth-first.  Either go from the first top node and work your way down and then revisit nodes or back-and-forth the length of a node\'92s family at a given level \'91til you\'92ve exhausted that horizontal movement and then go to the next node family.  In Java we see this as DOM (document object model - depth-first) and SAX (sample API for xml processing - a breadth-first approach)\
+\
+Depths:\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf4 \cb2 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 class\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  graph\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 def\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  __init__\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 self\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 gdict\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 None\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ):\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 if\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  gdict \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 is\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 None\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+         gdict \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \{\}\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 self\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 .\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 gdict \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  gdict\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf7 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 # Check for the visisted and unvisited nodes\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 def\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  dfs\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 graph\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  start\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  visited \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 None\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ):\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 if\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  visited \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 is\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 None\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      visited \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 set\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ()\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   visited\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 .\cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 add\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 start\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 )\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 print\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 start\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 )\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 for\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 next\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 in\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  graph\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 start\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 -\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  visited\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      dfs\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 graph\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 next\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  visited\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 )\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 return\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  visited\
+\
+gdict \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \{\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \
+   \cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "a"\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 set\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ([\cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "b"\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "c"\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]),\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "b"\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 set\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ([\cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "a"\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "d"\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]),\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "c"\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 set\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ([\cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "a"\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "d"\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]),\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "d"\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 set\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ([\cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "e"\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]),\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "e"\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 set\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ([\cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "a"\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ])\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \}\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+dfs\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 gdict\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 'a'\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 )\
+\
+\
+\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 import\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  collections\
+\cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 class\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  graph\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 def\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  __init__\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 self\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 gdict\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 None\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ):\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 if\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  gdict \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 is\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 None\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+         gdict \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \{\}\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 self\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 .\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 gdict \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  gdict\
+\cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 def\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  bfs\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 graph\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  startnode\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ):\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf7 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 # Track the visited and unvisited nodes using queue\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   seen\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  queue \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 set\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ([\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 startnode\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]),\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  collections\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 .\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 deque\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ([\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 startnode\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ])\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 while\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  queue\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      vertex \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  queue\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 .\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 popleft\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ()\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      marked\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 vertex\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 )\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+      \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 for\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  node \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 in\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  graph\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 [\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 vertex\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]:\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+         \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 if\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  node \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 not\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 in\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  seen\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+            seen\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 .\cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 add\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 node\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 )\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+            queue\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 .\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 append\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 node\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 )\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 def\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  marked\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 n\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ):\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 print\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 n\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 )\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\
+\pard\pardeftab720\pardirnatural\partightenfactor0
+\cf7 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 # The graph dictionary\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+gdict \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 =\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \{\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \
+   \cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "a"\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 set\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ([\cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "b"\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "c"\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]),\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "b"\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 set\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ([\cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "a"\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "d"\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]),\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "c"\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 set\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ([\cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "a"\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "d"\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]),\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "d"\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 set\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ([\cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "e"\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ]),\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+   \cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "e"\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 :\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf4 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 set\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ([\cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "a"\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ])\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \}\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 \
+bfs\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 (\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 gdict\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 ,\cf0 \shad\shadx20\shady-20\shadr20\shado0 \shadc0  \cf8 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 "a"\cf5 \shad\shadx20\shady-20\shadr20\shado0 \shadc0 )\
+\
+\
+}
