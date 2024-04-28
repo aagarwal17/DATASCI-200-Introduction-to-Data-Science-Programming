@@ -1,0 +1,15 @@
+This is a fake CV for the fun of it...
+
+Name: Jane Doe, Ph.D.
+
+Education: 
+2023 Ph.D., UC Berkeley
+2019 M.S., Harvard Univ.
+2014 B.S., MIT
+
+Employment History:
+2014 - 2022: Lecturer, Natural Language Processing Program
+2010 - 2014: Biochemist Intern
+2005 - 2010: Prep-cook, Chipotle, Peoria, IL
+
+
