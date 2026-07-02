@@ -1,0 +1,11 @@
+This is testofile.txt
+鹅、鹅、鹅    goose, goose, goose
+曲项向天歌。  The song is singing to the sky.
+白毛浮绿水，  White hair floats on green water,
+红掌拨清波    Anthurium stirs clear waves
+------------
+Morne esprit, autrefois amoureux de la lutte, 
+L'Espoir, dont l'éperon attisait ton ardeur, 
+Ne veut plus t'enfourcher! Couche-toi sans pudeur, 
+Vieux cheval dont le pied à chaque obstacle bute. 
+Résigne-toi, mon coeur; dors ton sommeil de brute.

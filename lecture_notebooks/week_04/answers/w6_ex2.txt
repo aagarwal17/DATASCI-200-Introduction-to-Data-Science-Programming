@@ -1,0 +1,7 @@
+Three statements, one at a time, &Theta;(1) each time for a total of &Theta;(3)
+<br />
+&Theta;(n) (aka linear)
+<br />
+&Theta;(n<sup>2</sup>) (aka quadratic)
+<br />
+&Theta;(5)

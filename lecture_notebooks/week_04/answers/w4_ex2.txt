@@ -1,0 +1,35 @@
+<pre>
+import emoji
+
+companyName = "Joe's Fish Market"
+
+print("-"*50)
+print(f"Welcome to {companyName}.  Please select from the following: (or any other input to quit.)")
+print("\t1 = Order Fish")
+print("\t2 = Order Lobsters and Crabs")
+print("\t3 = Order sauces or salads")
+print("\t4 = Quit")
+
+user_choice = 0
+order = []
+
+
+while user_choice < 4:
+    user_choice = int(input("Enter your choice: "))
+    print(f"\nThanks! You issued the command {user_choice} " + emoji.emojize(':thumbs_up:'))
+
+    if user_choice in range(1,4):
+        if user_choice == 1:
+            order.append("Fish")
+            print("\tToday's fish includes seabass, hake, tilapia, and fugu.")
+        elif user_choice == 2:
+            order.append("Lobsters/Crabs")
+            print("\tFor today's Lobsters and Crabs, we offer items from Maine and Rhode Island.")
+        elif user_choice == 3:
+            order.append("Sauces or Salads")
+            print("\tThe sauces and salads today are shrimp sauce and Caesar Salad.")
+    else:
+        for i in range(0, len(order)):
+            print(f"{order[i]}")
+        print(f"\tCome back soon. \U0001f44b")
+</pre>

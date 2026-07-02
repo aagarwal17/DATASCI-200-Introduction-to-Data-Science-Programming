@@ -1,0 +1,8 @@
+<pre>
+# Answer:
+# and the same output using a comprehension
+x = [i**2 for i in my_list]   # NOTE the syntax & location of for i ...
+print(x)                      # and where the i**2 is
+
+print(type(x))
+</pre>

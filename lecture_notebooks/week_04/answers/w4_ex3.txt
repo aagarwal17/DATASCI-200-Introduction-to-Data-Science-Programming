@@ -1,0 +1,21 @@
+<pre>
+import math
+
+start = 0
+end = 10
+
+# insert your answer here
+mid = math.ceil(end/2)
+letter = 4
+
+
+while letter != mid:  
+    if letter < mid:   # 4 < 5
+        end = mid      # end (10) is now midpoint, 5
+    else:              # 4 > 5, e.g., letter is 8
+                       # 8 > 5, so 
+        start = mid    # start (0) is now mid (5)
+        
+    mid = math.ceil((end+start)/2)  # get the new start/end range of values
+    print("start", start, "letter",letter, " mid",mid, " end",end)
+</pre>

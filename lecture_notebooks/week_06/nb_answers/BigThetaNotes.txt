@@ -1,0 +1,31 @@
+<p>When we use &ldquo;Big Theta&rdquo; &Theta; notation, it means we have an asymptotically tight bound on the running time. &ldquo;Asymptotically&rdquo; because it matters for only large values of <i>n</i>.  &ldquo;Tight bound&rdquo; because the running time is kept to within a constant factor above and below.</p>
+<p>
+Let's look at an implementation of linear search:
+<pre>
+var doLinearSearch = function(array, targetValue) {
+  for (var guess = 0; guess < array.length; guess++) {
+    if (array[guess] === targetValue) { 
+        return guess;  # found it!
+    }
+  }
+  return -1;  # didn't find it
+};
+</pre>
+<p>Let&rsquo;s denote the size of the array (array.length) by <i>n</i>.  The maximum number of times that the for-loop can run is <i>n</i> and this worst case occurs when the value being searched for is not present in the array.</p>
+Each time the for-loop iterates, it has to do several things:
+<ul><li>compare guess with array.length</li>
+<li>compare array[guess] with targetValue</li>
+<li>possibly return the value of guess</li>
+<li>increment guess.</li></ul>
+Each of these little computations takes a constant amount of time each time it executes. If the for-loop iterates <i>n</i> times, then the time for all <i>n</i> iterations is <i>c<sub>1</sub></i> ⋅ <i>n</i>, where <i>c<sub>i</sub></i> is the sum of the times for the computations in one loop iteration. Now, we cannot say here what the value of <i>c<sub>1</sub></i> because it depends on the speed of the computer, the programming language used, the compiler or interpreter that translates the source program into runnable code, and other factors.</p>
+<p>This code has a little bit of extra overhead, for setting up the for-loop (including initializing guess to 0) and possibly returning -1 at the end. Let's call the time for this overhead <i>c<sub>2</sub></i>, which is also a constant. Therefore, the total time for linear search in the worst case is <i>c</i><sub>1</sub> ⋅ <i>n</i> + <i>c<sub>2</sub></i>.
+</p>
+<p>The constant factor <i>c<sub>1</sub></i> and the low-order <i>c<sub>2</sub></i> don&rsquo;t tell us about the rate of growth of the running time. What&rsquo;s significant is that the worst-case running time of linear search grows like the array size <i>n</i>, or &Theta;(<i>n</i>). </p>
+<p>For &Theta;<i>n</i>, once <i>n</i> gets large enough, the running time, the running time is at least <i>k<sub>1</sub> ⋅ <i>n</i> and at most <i>k<sub>2</sub> ⋅ <i>n</i> for some constants <i>k<sub>1</sub> ⋅ <i>n</i> and <i>k<sub>2</sub> ⋅ <i>n</i>:
+<br />
+<img src="images/theta1.png"/><br />
+For small values of the <i>k</i> don&rsquo;t matter; as long as the constants exist, the running time is &Theta;(<i>n</i>).</p>
+<p>This holds to other functions (n2, n log2n, or any other function of n. Think of the running time that is &Theta;(<i>f</i>(<i>n</i>)) for some function of <i>f</i>(<i>n</i>):
+<br /><img src="images/theta2.png"/><br />.
+<p>When <i>n</i> gets large enough the running time is between <i>k</i><sub>1</sub> ⋅ <i>f</i>(<sub><i>n</i></sub>) and <i>k</i><sub>2</sub> ⋅ <i>f</i>(<sub><i>n</i></sub>).</p>
+<p>In practice drop constant factors and low-order terms and the can ignore the time units. E.g., 6<i>n</i><sup>2</sup> + 100n + 300: drop low-order terms (100<i>n</i> and 300) and the constanct factor (6), leaving &Theta;(<i>n</i><sup>2</sup>).  <span style="font-size:9px;"From Profs Cormen and Balkcom [cc-by-nc-sa license]</span></p>

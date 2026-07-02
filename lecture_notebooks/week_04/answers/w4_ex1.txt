@@ -1,0 +1,24 @@
+<pre>
+# answers with different impacts:
+
+term_to_find = "sri"
+
+for i in range(0, len(list_one)):
+    if term_to_find == list_one[i]:
+        print(f"Count: Search term {list_one[i]} found at index {i}.")
+    else:
+        print("Not found.")
+
+print("_"*50)
+
+for i in range(0, len(list_one)):
+    if term_to_find == list_one[i]:
+        print(f"Count: Search term {list_one[i]} found at index {i}.")
+        break;
+    else:
+        print("Not found.")
+
+print("_"*50)
+if term_to_find in list_one:
+    print(f"Count {i}. Found the desired word: {term_to_find}.")
+</pre>
